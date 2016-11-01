@@ -18,7 +18,6 @@ namespace Quanta.Tests
                 var csv = new CsvReader(textReader);
                 var records = csv.GetRecords<Object>();
 
-                Trace.WriteLine(records.First());
                 Assert.AreEqual(1964, records.Count());
             }
         }
