@@ -26,11 +26,11 @@ namespace Quanta.Tests
                     var period = csv.GetField<string>("<PER>");
                     var boolField = csv.GetField<string>("<DATE>");
                     var time = csv.GetField<string>("<TIME>");
-                    var openPrice = Double.Parse(csv.GetField<string>("<OPEN>"), CultureInfo.InvariantCulture);
-                    var highPrice = Double.Parse(csv.GetField<string>("<HIGH>"), CultureInfo.InvariantCulture);
-                    var lowPrice = Double.Parse(csv.GetField<string>("<LOW>"), CultureInfo.InvariantCulture);
-                    var closePrice = Double.Parse(csv.GetField<string>("<CLOSE>"), CultureInfo.InvariantCulture);
-                    var volume = Double.Parse(csv.GetField<string>("<VOL>"), CultureInfo.InvariantCulture);
+                    var openPrice = double.Parse(csv.GetField<string>("<OPEN>"), CultureInfo.InvariantCulture);
+                    var highPrice = double.Parse(csv.GetField<string>("<HIGH>"), CultureInfo.InvariantCulture);
+                    var lowPrice = double.Parse(csv.GetField<string>("<LOW>"), CultureInfo.InvariantCulture);
+                    var closePrice = double.Parse(csv.GetField<string>("<CLOSE>"), CultureInfo.InvariantCulture);
+                    var volume = double.Parse(csv.GetField<string>("<VOL>"), CultureInfo.InvariantCulture);
 
                     closePrices.Add(closePrice);
                 }
