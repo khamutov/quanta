@@ -47,8 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FinamCsvRecord.cs" />
-    <Compile Include="FinamCsvRecordMap.cs" />
+    <Compile Include="DataFeed\FinamCsvRecord.cs" />
+    <Compile Include="DataFeed\FinamCsvRecordMap.cs" />
+    <Compile Include="DataFeed\Ticker.cs" />
+    <Compile Include="DataFeed\TickerDownloader.cs" />
+    <Compile Include="DataFeed\TickerMoexCsvMap.cs" />
+    <Compile Include="DataFeed\WebDownloader.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
