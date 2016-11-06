@@ -49,9 +49,12 @@
   <ItemGroup>
     <Compile Include="DataFeed\FinamCsvRecord.cs" />
     <Compile Include="DataFeed\FinamCsvRecordMap.cs" />
+    <Compile Include="DataFeed\FinamQuoteDownloader.cs" />
+    <Compile Include="DataFeed\FinamTickerHelper.cs" />
+    <Compile Include="DataFeed\FinamTickerId.cs" />
     <Compile Include="DataFeed\Ticker.cs" />
-    <Compile Include="DataFeed\TickerDownloader.cs" />
     <Compile Include="DataFeed\TickerMoexCsvMap.cs" />
+    <Compile Include="DataFeed\TickerMoexDownloader.cs" />
     <Compile Include="DataFeed\WebDownloader.cs">
       <SubType>Component</SubType>
     </Compile>

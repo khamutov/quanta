@@ -3,6 +3,7 @@ using System.IO;
 using CsvHelper;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Quanta.DataFeed;
 using Xunit;
 
@@ -31,6 +32,22 @@ namespace Quanta.Tests
         public void TestDownload()
         {
             WebDownloader downloader = new WebDownloader();
+        }
+
+        [Fact]
+        public async Task TestMoexDownloader()
+        {
+            var tickers = await TickerMoexDownloader.DownloadTickers();
+            Assert.Equal(292, tickers.Count);
+        }
+
+        [Fact]
+        public async Task TestFinamMapping()
+        {
+            var tickerMapping = await FinamTickerHelper.DownloadMapping();
+            Assert.Equal("81820", tickerMapping.Single(t => t.Ticker == "ALRS" && t.Market == "1").Id);
+            Assert.Equal("21018", tickerMapping.Single(t => t.Ticker == "MTLR" && t.Market == "1").Id);
+            Assert.Equal("16842", tickerMapping.Single(t => t.Ticker == "GAZP" && t.Market == "1").Id);
         }
 
         [Fact]
