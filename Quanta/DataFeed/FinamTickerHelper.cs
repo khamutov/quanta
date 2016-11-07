@@ -22,7 +22,7 @@ namespace Quanta.DataFeed
 
         public static async Task<List<FinamTickerId>> DownloadMapping()
         {
-            WebDownloader downloader = new WebDownloader();
+            var downloader = new WebDownloader();
 
             var jsdata = await downloader.DownloadStringTaskAsync("http://www.finam.ru/cache/icharts/icharts.js");
 

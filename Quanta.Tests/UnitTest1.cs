@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using CsvHelper;
 using System.Linq;
@@ -48,6 +49,19 @@ namespace Quanta.Tests
             Assert.Equal("81820", tickerMapping.Single(t => t.Ticker == "ALRS" && t.Market == "1").Id);
             Assert.Equal("21018", tickerMapping.Single(t => t.Ticker == "MTLR" && t.Market == "1").Id);
             Assert.Equal("16842", tickerMapping.Single(t => t.Ticker == "GAZP" && t.Market == "1").Id);
+        }
+
+        [Fact]
+        public async Task QuoteDownloadTest()
+        {
+            var tickerId = new FinamTickerId()
+            {
+                Id = "21018",
+                Market = "1",
+                Ticker = "MTLR"
+            };
+            var quotes = await FinamQuoteDownloader.DownloadQuotes(tickerId);
+            Assert.Equal(1966, quotes.Count);
         }
 
         [Fact]
