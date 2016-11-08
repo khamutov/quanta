@@ -120,5 +120,24 @@ namespace Quanta.Tests
             };
             collection.InsertOne(document);
         }
+
+        [Fact]
+        public async Task TestSaveQuotesToMongo()
+        {
+            var tickerId = new FinamTickerId()
+            {
+                Id = "21018",
+                Market = "1",
+                Ticker = "MTLR"
+            };
+            var quotes = await FinamQuoteDownloader.DownloadQuotes(tickerId);
+
+            var client = new MongoClient();
+            var database = client.GetDatabase("foo");
+            var collection = database.GetCollection<FinamCsvRecord>("quotes");
+
+            await collection.DeleteManyAsync(new BsonDocument());
+            await collection.InsertManyAsync(quotes);
+        }
     }
 }
