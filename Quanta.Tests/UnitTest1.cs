@@ -5,6 +5,8 @@ using CsvHelper;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using Quanta.DataFeed;
 using Xunit;
 
@@ -97,6 +99,26 @@ namespace Quanta.Tests
                     csvW.WriteRecords(records);
                 }
             }
+        }
+
+        [Fact]
+        public void TestMongoConnection()
+        {
+            var client = new MongoClient();
+            var database = client.GetDatabase("foo");
+            var collection = database.GetCollection<BsonDocument>("bar");
+            var document = new BsonDocument
+            {
+                { "name", "MongoDB" },
+                { "type", "Database" },
+                { "count", 1 },
+                { "info", new BsonDocument
+                    {
+                        { "x", 203 },
+                        { "y", 102 }
+                    }}
+            };
+            collection.InsertOne(document);
         }
     }
 }
